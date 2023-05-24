@@ -1,4 +1,16 @@
 
+/*
+    - Classe que faz a manipulação para devolver um json mais simples
+    - A variavel resultado retorna um json do tipo: 
+        {
+            "numeroVendedor" : "1",
+            "numeroVendas" : 2,
+            "mesVenda" : 3,
+            "valorUnitario": 100,
+            "valorTotal" : 300
+        }
+*/
+
 class FormataDados {
 
     formataDados(data) {

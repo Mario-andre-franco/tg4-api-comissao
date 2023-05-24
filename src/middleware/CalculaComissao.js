@@ -12,6 +12,14 @@ const metas = [
     { mes: 12, qtd: 2 }
 ];
 
+/*
+    - Classe que faz todo calculo
+    - Método handle:
+        recebe as informações já formatada,e pra cada objeto no array (caso seja um array > 1, ele faz o de:para e coloca em outro objeto json retornado no final)
+    - verificaMetas: recebe o numero de vendas, o mes e as metas
+    - calculaComissao.handle: faz o calculo da comissao e retorna apenas o valor da comissao
+*/
+
 class CalculaComissao {
 
     handle(data) {
@@ -26,6 +34,8 @@ class CalculaComissao {
             const valorTotal = item.valorTotal;
             const comissao = this.calcularComissao(valorTotal, valorUnitario, isBateuMeta);
 
+            //esse if é para verificar se existe dentro da variavel results, algum objeto 'numeroVendedor', se não existir é criado um novo objeto usado como key o [numeroVendedor]
+
             if (!results[numeroVendedor]) {
                 results[numeroVendedor] = {
                     numeroVendedor: numeroVendedor,
@@ -39,6 +49,8 @@ class CalculaComissao {
     }
 
     verificaMetas(numeroDeVendas, mes, metas) {
+        //nesse find é passado o meta.mes (que está definido lá no começo do arquivo) e fazemos a comparaçao se é igual ao mes que vem como parametro e jogamos pra variavel metasDoMes
+
         const metasDoMes = metas.find(meta => meta.mes === mes)
         if (metasDoMes && numeroDeVendas > metasDoMes.qtd) {
             return true
